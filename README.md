@@ -4,7 +4,9 @@
 DAQmx is a National Instruments standard library providing an API for data acquisition devices to several programming
 languages from National Instruments like LabVIEW and LabWindows/CVI, but also providing a C/C++ API.
 
-## Library content
+This files in this collection are provides without any warranty in the hope they migth be useful. You can use, modify and redistribute without restrictions.
+
+## Functions provided
 At the moment all API functions to acquire analog data with a task configured in NI-MAX are packed
 from the C/C++ API to oct files. Naming is following the function names from the API.
 
