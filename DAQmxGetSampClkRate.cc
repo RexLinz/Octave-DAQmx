@@ -2,7 +2,7 @@
 //
 // get the sample clock the task referenced by taskHandle is using
 
-// mkoctfile -I. -L. -lNIDAQmx DAQmxGetSampClkRate.cc
+// mkoctfile -I. -L. -lNIDAQmx -s DAQmxGetSampClkRate.cc
 
 #include <iostream>
 #include <octave/oct.h>

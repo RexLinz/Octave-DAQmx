@@ -6,7 +6,7 @@
 // return data captured and time vector
 // stop and clear task
 
-// mkoctfile -I. -L. -lNIDAQmx DAQmxAcquireAnalogF64.cc
+// mkoctfile -I. -L. -lNIDAQmx -s DAQmxAcquireAnalogF64.cc
 
 #include <iostream>
 #include <octave/oct.h>

@@ -4,7 +4,7 @@
 // NOTE: a stopped task could be restarted
 
 // compile and link:
-// mkoctfile -I. -L. -lNIDAQmx DAQmxStopTask.cc
+// mkoctfile -I. -L. -lNIDAQmx -s DAQmxStopTask.cc
 
 #include <iostream>
 #include <octave/oct.h>

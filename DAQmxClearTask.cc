@@ -4,7 +4,7 @@
 // NOTE: a cleared task could not be restarted again
 
 // compile and link:
-// mkoctfile -I. -L. -lNIDAQmx DAQmxClearTask.cc
+// mkoctfile -I. -L. -lNIDAQmx -s DAQmxClearTask.cc
 
 #include <iostream>
 #include <octave/oct.h>

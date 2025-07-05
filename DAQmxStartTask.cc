@@ -3,7 +3,7 @@
 // start the task referenced by taskHandle
 
 // compile and link:
-// mkoctfile -I. -L. -lNIDAQmx DAQmxStartTask.cc
+// mkoctfile -I. -L. -lNIDAQmx -sDAQmxStartTask.cc
 
 #include <iostream>
 #include <octave/oct.h>

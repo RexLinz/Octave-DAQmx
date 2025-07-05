@@ -2,7 +2,7 @@
 //
 // get number of samples per channel the task referenced by taskHandle is using
 
-// mkoctfile -I. -L. -lNIDAQmx DAQmxGetSampQuantSampPerChan.cc
+// mkoctfile -I. -L. -lNIDAQmx -s DAQmxGetSampQuantSampPerChan.cc
 
 #include <iostream>
 #include <octave/oct.h>

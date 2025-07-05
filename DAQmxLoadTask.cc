@@ -4,7 +4,7 @@
 // return task handle
 
 // compile and link:
-// mkoctfile -I. -L. -lNIDAQmx DAQmxLoadTask.cc
+// mkoctfile -I. -L. -lNIDAQmx -s DAQmxLoadTask.cc
 
 #include <iostream>
 #include <octave/oct.h>

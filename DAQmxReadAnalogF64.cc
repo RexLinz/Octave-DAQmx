@@ -7,7 +7,7 @@
 //   samplesPerChannel will be limited by task settings
 //   channels ordered as configured in task
 
-// mkoctfile -I. -L. -lNIDAQmx DAQmxReadAnalogF64.cc
+// mkoctfile -I. -L. -lNIDAQmx -s DAQmxReadAnalogF64.cc
 
 #include <iostream>
 #include <octave/oct.h>

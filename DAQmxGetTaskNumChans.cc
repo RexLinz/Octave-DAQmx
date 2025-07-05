@@ -2,7 +2,7 @@
 //
 // get number of channels the task referenced by taskHandle is using
 
-// mkoctfile -I. -L. -lNIDAQmx DAQmxGetTaskNumChans.cc
+// mkoctfile -I. -L. -lNIDAQmx -s DAQmxGetTaskNumChans.cc
 
 #include <iostream>
 #include <octave/oct.h>
