@@ -18,7 +18,7 @@
 char  errBuff[2048] = { '\0' };
 
 DEFUN_DLD (DAQmxReadAnalogF64, args, nargout,
-  "[y, <fsamp ,> statusCode] = DAQmxReadAnalogF64(taskHandle, maxSamples)")
+  "[y, statusCode] = DAQmxReadAnalogF64(taskHandle, maxSamples)")
 {
   if (args.length()<1)
     error("expect task handle as argument");
