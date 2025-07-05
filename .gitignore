@@ -1,0 +1,3 @@
+*.oct
+NIDAQmx.h
+NIDAQmx.lib
