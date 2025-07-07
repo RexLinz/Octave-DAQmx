@@ -1,4 +1,4 @@
-# Set of oct files to add access to DAQmx devices to GNU Octave
+# Set of oct files to add access to DAQmx devices to GNU Octave on Windows
 
 ## Preface
 DAQmx is a National Instruments standard library providing an API for data acquisition devices to several programming
@@ -63,3 +63,7 @@ National Instruments "External Compiler Support" folders. Then you can run **NID
 To use the functions you won't have to copy the CC files to your application folder.
 Your application just need access to the compiled oct files.
 So either copy the ones you are actually using to your application folder or add the folder to your path instead.
+
+**NOTE** At the moment the binutils coming with Octave up to 10.2 cause mkoctfile to fail linking with the libraries
+creates by MSVC compiler. This will be fixed in Octave 10.3. 
+For now you can use the nightly Octave 10.2.1 build from the **mxe-default section** at [Octave nightly builds](https://nightly.octave.org/#/download).
