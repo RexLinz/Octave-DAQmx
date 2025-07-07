@@ -8,6 +8,7 @@
 % copy these files to the local folder to be able to compile
 
 % TODO functions to improve usabiltity in future
+% * add help to functions and/or create DAQmx.m (function overview or just help)
 % * errorString = DAQmxGetErrorString(errorCode)
 % * -> remove printing error from functions then
 % * access digital ports (read and write)
