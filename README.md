@@ -35,6 +35,12 @@ from the C/C++ API to oct files. Naming is following the function names from the
 - **statusCode = DAQmxClearTask(taskHandle)** \
   Clear a task. A cleared task could not be restarted.
 
+- **errorString = DAQmxGetErrorString(statusCode)** \
+  Get string describing given statusCode (error)
+
+- **errorString = DAQmxGetExtendedErrorInfo()** \
+  Get string describing last (active) error
+
 **NOTES**
 
 - DAQmxLoadTask will fail if you did not clear your task.
