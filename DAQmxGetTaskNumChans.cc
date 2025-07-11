@@ -8,8 +8,6 @@
 #include <octave/oct.h>
 #include <NIDAQmx.h>
 
-char  errBuff[2048] = { '\0' };
-
 DEFUN_DLD (DAQmxGetTaskNumChans, args, nargout,
   "[numChannels, statusCode] = DAQmxGetTaskNumChans(taskHandle)")
 {
@@ -25,12 +23,6 @@ DEFUN_DLD (DAQmxGetTaskNumChans, args, nargout,
   int32 statusCode = 0;
 	uInt32 numChannels = 0;
   statusCode = DAQmxGetTaskNumChans(taskHandle, &numChannels);
-
-	if (statusCode<0)
-  {
-		DAQmxGetExtendedErrorInfo(errBuff, 2048);
-		printf("DAQmx Error: %s\n", errBuff);
-  }
 
   octave_value_list retval(2);
   retval(0) = octave_value(numChannels);

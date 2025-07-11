@@ -10,8 +10,6 @@
 #include <octave/oct.h>
 #include <NIDAQmx.h>
 
-char  errBuff[2048] = { '\0' };
-
 DEFUN_DLD (DAQmxLoadTask, args, nargout,
   "[taskHandle, statusCode] = DAQmxLoadTask(taskName)")
 {
@@ -27,12 +25,6 @@ DEFUN_DLD (DAQmxLoadTask, args, nargout,
   TaskHandle taskHandle = 0;
   int32 statusCode = 0;
   statusCode = DAQmxLoadTask(taskName, &taskHandle);
-
-	if (statusCode<0)
-  {
-		DAQmxGetExtendedErrorInfo(errBuff, 2048);
-		printf("DAQmx Error: %s\n", errBuff);
-  }
 
   octave_value_list retval(2);
 // returning a void* pointer as uint64

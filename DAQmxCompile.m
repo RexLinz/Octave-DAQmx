@@ -9,8 +9,7 @@
 
 % TODO functions to improve usabiltity in future
 % * add help to functions and/or create DAQmx.m (function overview or just help)
-% * errorString = DAQmxGetErrorString(errorCode)
-% * -> remove printing error from functions then
+% * pass statusCode as int32
 % * access digital ports (read and write)
 % * write to DAC
 
@@ -22,7 +21,6 @@ clear all
 % define a function to compile to make changing options more easy
 function compile(sourcefile)
   disp(["compiling " sourcefile]);
-
   % -s to strip debugging in formation
   % -Wno-deprecated to skip deprecated warnings
 %  [output, status] = mkoctfile("-I.", "-L.", "-lNIDAQmx", sourcefile);
@@ -48,6 +46,9 @@ compile("DAQmxReadAnalogF64.cc");
 % stop and clear task
 compile("DAQmxStopTask.cc");
 compile("DAQmxClearTask.cc");
+% get error information from statusCode
+compile("DAQmxGetErrorString.cc"); % error with specific code
+compile("DAQmxGetExtendedErrorInfo.cc"); % last pending error
 
 % complete example of acquiring analog data as a single CC file
 % might be more efficient to modify for some applications

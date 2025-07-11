@@ -15,8 +15,6 @@
 
 //#define VERBOSE
 
-char  errBuff[2048] = { '\0' };
-
 DEFUN_DLD (DAQmxReadAnalogF64, args, nargout,
   "[y, statusCode] = DAQmxReadAnalogF64(taskHandle, maxSamples)")
 {
@@ -63,11 +61,6 @@ DEFUN_DLD (DAQmxReadAnalogF64, args, nargout,
     statusCode = DAQmxReadAnalogF64(taskHandle, sampPerChan, 1.0+ sampPerChan / sampClkRate, DAQmx_Val_GroupByScanNumber, data, numChannels * sampPerChan, &samplesRead, NULL);
   }
 
-	if (statusCode<0)
-  {
-		DAQmxGetExtendedErrorInfo(errBuff, 2048);
-		printf("DAQmx Error: %s\n", errBuff);
-  }
 #ifdef VERBOSE
   if (data!=NULL)
     printf("%d samples acquired\n", samplesRead);

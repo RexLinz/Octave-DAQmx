@@ -8,8 +8,6 @@
 #include <octave/oct.h>
 #include <NIDAQmx.h>
 
-char  errBuff[2048] = { '\0' };
-
 DEFUN_DLD (DAQmxGetSampQuantSampPerChan, args, nargout,
   "[sampPerChan, statusCode] = DAQmxGetSampQuantSampPerChan(taskHandle)")
 {
@@ -25,12 +23,6 @@ DEFUN_DLD (DAQmxGetSampQuantSampPerChan, args, nargout,
   int32 statusCode = 0;
 	uInt64 sampPerChan = 0;
   statusCode = DAQmxGetSampQuantSampPerChan(taskHandle, &sampPerChan);
-
-	if (statusCode<0)
-  {
-		DAQmxGetExtendedErrorInfo(errBuff, 2048);
-		printf("DAQmx Error: %s\n", errBuff);
-  }
 
   octave_value_list retval(2);
   retval(0) = octave_value(sampPerChan);
