@@ -1,6 +1,6 @@
 // errorString = DAQmxGetErrorString(statusCode)
 //
-// return text for last error
+// return error text for given status code
 
 // compile and link:
 // mkoctfile -I. -L. -lNIDAQmx -s DAQmxGetErrorString.cc
@@ -10,7 +10,8 @@
 #include <NIDAQmx.h>
 
 DEFUN_DLD (DAQmxGetErrorString, args, nargout,
-  "errorString = DAQmxGetErrorString(statusCode)")
+"errorString = DAQmxGetErrorString(statusCode)\n\
+return error text for given status code")
 {
   if (args.length()!=1)
     error("expect error number as argument");

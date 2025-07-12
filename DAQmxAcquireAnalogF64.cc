@@ -17,7 +17,12 @@
 char  errBuff[2048] = { '\0' };
 
 DEFUN_DLD (DAQmxAcquireAnalogF64, args, nargout,
-  "[y, t] = DAQmxAcquireAnalogF64(taskName, samplesPerChannel)")
+"[y, t] = DAQmxAcquireAnalogF64(taskName, samplesPerChannel)\n\
+Acquire analog data running a task preconfigured in MAX\n\
+if samplesPerChannel is not given, it will use settings from task\n\
+  note samplesPerChannel will be limited by task settings for tasks set to 'finite samples'\n\
+return data captured and time vector\n\
+stop and clear task")
 {
   if (args.length()<1)
     error("invalid number of input arguments");

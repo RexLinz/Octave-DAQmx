@@ -10,7 +10,8 @@
 #include <NIDAQmx.h>
 
 DEFUN_DLD (DAQmxStartTask, args, nargout,
-  "statusCode = DAQmxStartTask(taskHandle)")
+"statusCode = DAQmxStartTask(taskHandle)\n\
+start the task referenced by taskHandle")
 {
   if (args.length()!=1)
     error("expect task handle as argument");
@@ -27,5 +28,5 @@ DEFUN_DLD (DAQmxStartTask, args, nargout,
 
 //  return octave_value(static_cast<uInt64>(ptr_as_int));
   return octave_value(statusCode);
-
 }
+

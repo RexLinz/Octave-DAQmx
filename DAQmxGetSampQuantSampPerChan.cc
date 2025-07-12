@@ -9,7 +9,8 @@
 #include <NIDAQmx.h>
 
 DEFUN_DLD (DAQmxGetSampQuantSampPerChan, args, nargout,
-  "[sampPerChan, statusCode] = DAQmxGetSampQuantSampPerChan(taskHandle)")
+"[sampPerChan, statusCode] = DAQmxGetSampQuantSampPerChan(taskHandle)\n\
+get number of samples per channel the task referenced by taskHandle is using")
 {
   if (args.length()<1)
     error("expect task handle as argument");

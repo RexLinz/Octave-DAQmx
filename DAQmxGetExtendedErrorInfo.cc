@@ -10,7 +10,8 @@
 #include <NIDAQmx.h>
 
 DEFUN_DLD (DAQmxGetExtendedErrorInfo, args, nargout,
-  "errorString = DAQmxGetExtendedErrorInfo()")
+"errorString = DAQmxGetExtendedErrorInfo()\n\
+return text for last error")
 {
   if (args.length()!=0)
     error("this function has no arguments");

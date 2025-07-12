@@ -1,7 +1,7 @@
 // statusCode = DAQmxClearTask(taskHandle)
 //
 // clear the task referenced by taskHandle
-// NOTE: a cleared task could not be restarted again
+// NOTE: a cleared task could NOT be restarted again
 
 // compile and link:
 // mkoctfile -I. -L. -lNIDAQmx -s DAQmxClearTask.cc
@@ -11,7 +11,9 @@
 #include <NIDAQmx.h>
 
 DEFUN_DLD (DAQmxClearTask, args, nargout,
-  "statusCode = DAQmxClearTask(taskHandle)")
+"statusCode = DAQmxClearTask(taskHandle)\n\
+clear the task referenced by taskHandle\n\
+NOTE: a cleared task could NOT be restarted again")
 {
   if (args.length()!=1)
     error("invalid number of input arguments");

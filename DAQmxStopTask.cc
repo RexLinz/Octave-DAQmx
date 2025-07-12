@@ -11,7 +11,9 @@
 #include <NIDAQmx.h>
 
 DEFUN_DLD (DAQmxStopTask, args, nargout,
-  "statusCode = DAQmxStopTask(taskHandle)")
+  "statusCode = DAQmxStopTask(taskHandle)\n\
+stop the task referenced by taskHandle\n\
+NOTE: a stopped task could be restarted")
 {
   if (args.length()!=1)
     error("invalid number of input arguments");

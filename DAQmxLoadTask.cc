@@ -11,7 +11,9 @@
 #include <NIDAQmx.h>
 
 DEFUN_DLD (DAQmxLoadTask, args, nargout,
-  "[taskHandle, statusCode] = DAQmxLoadTask(taskName)")
+"[taskHandle, statusCode] = DAQmxLoadTask(taskName)\n\
+load a DAQmx task configured in NI MAX using its name\n\
+return task handle")
 {
   if (args.length()!=1)
     error("invalid number of input arguments");

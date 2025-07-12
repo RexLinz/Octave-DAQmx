@@ -9,7 +9,8 @@
 #include <NIDAQmx.h>
 
 DEFUN_DLD (DAQmxGetTaskNumChans, args, nargout,
-  "[numChannels, statusCode] = DAQmxGetTaskNumChans(taskHandle)")
+"[numChannels, statusCode] = DAQmxGetTaskNumChans(taskHandle)\n\
+get number of channels the task referenced by taskHandle is using")
 {
   if (args.length()<1)
     error("expect task handle as argument");

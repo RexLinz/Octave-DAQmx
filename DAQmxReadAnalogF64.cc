@@ -1,5 +1,6 @@
-// read analog data from task referenced by taskHandle
+// [y, statusCode] = DAQmxReadAnalogF64(taskHandle, maxSamples)
 //
+// read analog data from task referenced by taskHandle
 // return data captured as matrix, channels in columns
 //
 // NOTES
@@ -16,7 +17,13 @@
 //#define VERBOSE
 
 DEFUN_DLD (DAQmxReadAnalogF64, args, nargout,
-  "[y, statusCode] = DAQmxReadAnalogF64(taskHandle, maxSamples)")
+"[y, statusCode] = DAQmxReadAnalogF64(taskHandle, maxSamples)\n\
+read analog data from task referenced by taskHandle\n\
+return data captured as matrix, channels in columns\n\
+NOTES\n\
+   if samplesPerChannel is not given, it will use settings from task\n\
+   samplesPerChannel will be limited by task settings\n\
+   channels ordered as configured in task")
 {
   if (args.length()<1)
     error("expect task handle as argument");

@@ -9,7 +9,8 @@
 #include <NIDAQmx.h>
 
 DEFUN_DLD (DAQmxGetSampClkRate, args, nargout,
-  "[sampleClockRate, statusCode] = DAQmxGetSampClkRate(taskHandle)")
+"[sampleClockRate, statusCode] = DAQmxGetSampClkRate(taskHandle)\n\
+get the sample clock the task referenced by taskHandle is using")
 {
   if (args.length()<1)
     error("expect task handle as argument");
