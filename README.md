@@ -12,26 +12,26 @@ from the C/C++ API to oct files. Naming is following the function names from the
 
 - **[taskHandle, statusCode] = DAQmxLoadTask(taskName);** \
   Load a task defined in NI MAX and return a task handle
-  
+
 - **[sampPerChan, statusCode] = DAQmxGetSampQuantSampPerChan(taskHandle);** \
   Get the number of samples per channel defined for that task
-  
+
 - **[numChannels, statusCode] = DAQmxGetTaskNumChans(taskHandle)** \
   Get the number of channels the task is using
-  
+
 - **[numChannels, statusCode] = DAQmxGetTaskNumChans(taskHandle)** \
   Get the sampling clock rate the task is using
-  
+
 - **statusCode = DAQmxStartTask(taskHandle)** \
   Start the task
-  
+
 - **[y, statusCode] = DAQmxReadAnalogF64(taskHandle, maxSamples)** \
   Read analog data from task, channels in columns.
   If maxSamples is not specified it will return the number of samples specified for the task.
-  
+
 - **statusCode = DAQmxStopTask(taskHandle)** \
   Stop the task. It is not required to stop a task if you clear it next.
-  
+
 - **statusCode = DAQmxClearTask(taskHandle)** \
   Clear a task. A cleared task could not be restarted.
 
@@ -46,7 +46,6 @@ from the C/C++ API to oct files. Naming is following the function names from the
 - DAQmxLoadTask will fail if you did not clear your task.
   If you loose your taskHandle you will have to restart Octave to be able to start the same task again.
 - Negative statusCodes are errors, positive are warnings.
-  At the moment the files are programmed such that they will print a detailed error message if a function is failed.
 
 ## Examples
 
@@ -71,5 +70,5 @@ Your application just need access to the compiled oct files.
 So either copy the ones you are actually using to your application folder or add the folder to your path instead.
 
 **NOTE** At the moment the binutils coming with Octave up to 10.2 cause mkoctfile to fail linking with the libraries
-creates by MSVC compiler. This will be fixed in Octave 10.3. 
+created by MSVC compiler. This will be fixed in Octave 10.3.
 For now you can use the nightly Octave 10.2.1 build from the **mxe-default section** at [Octave nightly builds](https://nightly.octave.org/#/download).
