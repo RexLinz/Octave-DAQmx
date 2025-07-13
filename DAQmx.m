@@ -19,6 +19,8 @@
 %   Read analog data from task, channels in columns.
 %   If maxSamples is not specified it will return the
 %   number of samples specified for the task.
+% [samplesWritten, statusCode] = DAQmxWriteAnalogF64(taskHandle, data)
+%   Write analog data to DAC
 % statusCode = DAQmxStopTask(taskHandle)** \
 %   Stop the task. It is not required to stop a task if you clear it next.
 % statusCode = DAQmxClearTask(taskHandle)** \
