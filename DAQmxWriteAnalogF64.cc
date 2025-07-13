@@ -31,30 +31,28 @@ NOTES\n\
   if (!args(1).isnumeric())
     error("expect numeric data to write");
   Matrix data = args(1).array_value();
+  float64 *src = data.rwdata();
+  bool32 dataLayout = DAQmx_Val_GroupByChannel; // octave store data in columns
 
   uInt32 numChannels = data.columns();
   int32 sampPerChan = data.rows();
-  float64 *src = data.rwdata();
-
-  // now write data
-  int32 statusCode = 0;
 
   bool32 autoStart = 1;
   // sample rate (to calculate timeout and build time vector)
 	float64 sampClkRate = 0.0f;
   float64 timeout = 1.0;
-  // devices not supporting timed output will fail
+  // tasks not using timed output will fail
   // TODO might be replaced by some attribute read
   DAQmxGetSampClkRate(taskHandle, &sampClkRate);
   if (sampClkRate>0)
     timeout += sampPerChan/sampClkRate; // time for data + 1 second
-  bool32 dataLayout = DAQmx_Val_GroupByChannel; // octave store data in columns
 
 #ifdef VERBOSE
   printf("Writing %lld samples for %ld channels at %f samples per second\n", sampPerChan, numChannels, sampClkRate);
 #endif
 	  // result
   int32 samplesWritten = 0;
+  int32 statusCode = 0;
   statusCode = DAQmxWriteAnalogF64(taskHandle, sampPerChan, autoStart, timeout, dataLayout, src, &samplesWritten, NULL);
 
 #ifdef VERBOSE
