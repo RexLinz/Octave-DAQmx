@@ -20,10 +20,10 @@ Please look at file **DAQmx.m** or type help DAQmx from within Octvae for a full
 ## Further reading
 
 - **NIDAQmx.pdf**
-Describing general workflow using DAQmx functions.
+describing general workflow using DAQmx functions.
 
--**daqmxcfunc.chm**
-Compiled help file for the DAQmx C API.
+- **daqmxcfunc.chm**
+compiled help file for the DAQmx C API.
 
 These files are provided by National Instruments with your installation.
 
