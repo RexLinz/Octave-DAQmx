@@ -52,38 +52,36 @@ NOTES\n\
     statusCode = DAQmxGetTaskNumChans(taskHandle, &numChannels);
   // sample rate (to calculate timeout and build time vector)
 	float64 sampClkRate = 0.0f;
-  if (statusCode>=0)
-    statusCode = DAQmxGetSampClkRate(taskHandle, &sampClkRate);
+  float64 timeout = 1.0;
+  // tasks not using timed output will fail
+  // TODO might be replaced by some attribute read
+  DAQmxGetSampClkRate(taskHandle, &sampClkRate);
+  if (sampClkRate>0)
+    timeout += sampPerChan/sampClkRate; // time for data + 1 second
 
-  // now read data
+  // we will fill data by scan, as we could get less than requested
+  Matrix y(numChannels, sampPerChan); // one column per scan
+  float64 *dest = y.rwdata();
+  bool32 dataLayout = DAQmx_Val_GroupByScanNumber; // octave store data in columns
+
 	int32 samplesRead = 0;
-	float64 *data = NULL;
   if (statusCode>=0)
   {
 #ifdef VERBOSE
 		printf("Acquiring %lld samples from %ld channels at %f samples per second\n", sampPerChan, numChannels, sampClkRate);
 #endif
-    data = new float64[sampPerChan*numChannels]; // malloc(sampPerChan * numChannels * sizeof(float64));
 	  // read result
-    statusCode = DAQmxReadAnalogF64(taskHandle, sampPerChan, 1.0+ sampPerChan / sampClkRate, DAQmx_Val_GroupByScanNumber, data, numChannels * sampPerChan, &samplesRead, NULL);
+    statusCode = DAQmxReadAnalogF64(taskHandle, sampPerChan, timeout, dataLayout, dest, numChannels*sampPerChan, &samplesRead, NULL);
   }
-
 #ifdef VERBOSE
   if (data!=NULL)
     printf("%d samples acquired\n", samplesRead);
 #endif
 
-  Matrix y(samplesRead,numChannels); // channels in columns
-  float64 *src = data;
-  for (int s = 0; s < samplesRead; s++)
-  {
-    for (int c = 0; c < numChannels; c++)
-      y(s,c) = *(src++);
-  }
-  delete []data;  // Clean up the dynamically allocated memory
-
   octave_value_list retval(2);
-  retval(0) = octave_value(y);
+  if (samplesRead < sampPerChan)
+    y.resize(numChannels, samplesRead); // cut unused columns (samples)
+  retval(0) = octave_value(y.transpose()); // one channel per column
   retval(1) = octave_value(statusCode);
   return retval;
 }
