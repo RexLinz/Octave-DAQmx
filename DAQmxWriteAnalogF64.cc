@@ -41,7 +41,7 @@ NOTES\n\
   // sample rate (to calculate timeout and build time vector)
 	float64 sampClkRate = 0.0f;
   float64 timeout = 1.0;
-  // tasks not using timed output will fail
+  // tasks not using timed output will fail to read sampClkRate
   // TODO might be replaced by some attribute read
   DAQmxGetSampClkRate(taskHandle, &sampClkRate);
   if (sampClkRate>0)
