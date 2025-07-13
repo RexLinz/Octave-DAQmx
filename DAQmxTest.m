@@ -30,6 +30,7 @@ disp("acquiring data");
 tic
 for n=1:1 % change to test continous acquisition
   % read the number of samples defined in task (or any number you like)
+  % will get less values if we try to read too many from task with finite samples
   [y, statusCode] = DAQmxReadAnalogF64(taskHandle, sampPerChannel);
   if statusCode<0
     disp("  acquire failed");
@@ -37,7 +38,7 @@ for n=1:1 % change to test continous acquisition
   end
 end
 disp(["  took " num2str(toc) " seconds"]);
-  t = (1:rows(y)) / sampleRate; % we might get less data than expected
+  t = (1:rows(y))' / sampleRate; % we might get less data than expected
   plot(1000*t, y); grid on;
   drawnow;
 xlabel("t [ms]");
