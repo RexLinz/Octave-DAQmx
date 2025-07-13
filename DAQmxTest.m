@@ -1,7 +1,11 @@
 % test DAQmx functions
 %
 % acquire analog data from task configured in MAX
-% this is following the workflow in LabVIEW
+% This example is following the workflow in LabVIEW
+%
+% The example below require you have set up an analog acquisition task in NI Max.
+% I have configured a task **SimTask** to acquire 2000 samples from 4 channels.
+% You might include custom scaling of channels defining your task.
 
 disp("loading task configured in MAX");
 [taskHandle, statusCode] = DAQmxLoadTask("SimTask"); % finite samples

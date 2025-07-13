@@ -1,10 +1,8 @@
 // [y, t] = DAQmxAcquireAnalogF64(taskName, samplesPerChannel)
 //
-// Acquire analog data running a task preconfigured in MAX
-// if samplesPerChannel is not given, it will use settings from task
-//   note samplesPerChannel will be limited by task settings for tasks set to "finite samples"
-// return data captured and time vector
-// stop and clear task
+// The example below require you have set up an analog acquisition task in NI Max.
+// I have configured a task **SimTask** to acquire 2000 samples from 4 channels.
+// You might include custom scaling of channels defining your task.
 
 // mkoctfile -I. -L. -lNIDAQmx -s DAQmxAcquireAnalogF64.cc
 
