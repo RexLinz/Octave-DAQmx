@@ -5,7 +5,7 @@ clear
 switch 3
   case 1 % digital input
     disp("loading digital input task configured in MAX");
-    [taskHandle, statusCode] = DAQmxLoadTask("TestDigIn"); % finite samples
+    [taskHandle, statusCode] = DAQmxLoadTask("SimDigIn"); % finite samples
     if statusCode<0;
       error("load task failed");
     end
@@ -17,7 +17,7 @@ switch 3
     end
 
     disp("acquiring data");
-    [pattern, statusCode] = DAQmxReadDigitalLines(taskHandle,1);
+    [pattern, statusCode] = DAQmxReadDigitalLines(taskHandle, 1); % 1 sample is default
 
     disp("clearing task");
     statusCode = DAQmxClearTask(taskHandle); clear taskHandle;
@@ -27,7 +27,7 @@ switch 3
 
   case 2 % digital output
     disp("loading digital output task configured in MAX");
-    [taskHandle, statusCode] = DAQmxLoadTask("TestDigOut"); % finite samples
+    [taskHandle, statusCode] = DAQmxLoadTask("SimDigOut"); % finite samples
     if statusCode<0;
       error("load task failed");
     end
@@ -40,7 +40,7 @@ switch 3
     %end
 
     disp("writing data");
-    [samplesWritten, statusCode] = DAQmxWriteDigitalLines(taskHandle,[1 0 1 0 0 0 1 1]);
+    [samplesWritten, statusCode] = DAQmxWriteDigitalLines(taskHandle,[1 0 0 1]);
 
     disp("clearing task");
     statusCode = DAQmxClearTask(taskHandle); clear taskHandle;
@@ -49,6 +49,7 @@ switch 3
     end
 
   case 3 % digital loopback
+    % NOTE: running two tasks in parallel look like not working on simulated device
     disp("loading and starting digital input task configured in MAX");
     [inTaskHandle, statusCode] = DAQmxLoadTask("TestDigIn"); % finite samples
     if statusCode<0;
@@ -62,14 +63,14 @@ switch 3
     disp("loading digital output task configured in MAX");
     [outTaskHandle, statusCode] = DAQmxLoadTask("TestDigOut"); % finite samples
     if statusCode<0;
-      error("load task failed");
+      error("load output task failed");
     end
 
     disp("reading inputs, write to output");
     disp("... press any key to stop");
     while (length(kbhit(1))==0) && (statusCode==0)
       [pattern, statusCode] = DAQmxReadDigitalLines(inTaskHandle, 1);
-      % input is 4 lines, output is 8 lines -> fill to match
+      % input task is 4 bits, output task 8 bits -> add data for remaining lines
       [samplesWritten, statusCode] = DAQmxWriteDigitalLines(outTaskHandle, [pattern 0 0 1 1]);
     end
     if (statusCode<0)

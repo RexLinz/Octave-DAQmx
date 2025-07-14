@@ -13,7 +13,9 @@ Please look at file **DAQmx.m** or type help DAQmx from within Octvae for a full
 
 ## Examples
 
-- **DAQmxTest.m** showing the usage step by step with some error checking.
+- **DAQmxTestAnalog.m** showing analog input step by step with some error checking.
+
+- **DAQmxTestDigital.m** showing digital IO step by step with some error checking.
 
 - **DAQmxAcquireAnalogF64.cc** is an example of how to use NI's C/C++ API in oct files.
 
