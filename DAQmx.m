@@ -37,7 +37,7 @@
 % - Negative statusCodes are errors, positive are warnings.
 %
 % EXAMPLES
-% DAQmxTest.m
+% DAQmxTestAnalog.m, DAQmxTestDigital
 %   Usage of functions step by step with some error checking.
 % DAQmxAcquireAnalogF64.cc
 %   Usage of NI's C/C++ API in oct files.
