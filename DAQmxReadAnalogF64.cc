@@ -74,8 +74,7 @@ NOTES\n\
     statusCode = DAQmxReadAnalogF64(taskHandle, sampPerChan, timeout, dataLayout, dest, numChannels*sampPerChan, &samplesRead, NULL);
   }
 #ifdef VERBOSE
-  if (data!=NULL)
-    printf("%d samples acquired\n", samplesRead);
+  printf("%d samples acquired\n", samplesRead);
 #endif
 
   octave_value_list retval(2);
