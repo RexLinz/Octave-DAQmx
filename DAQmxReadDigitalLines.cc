@@ -36,9 +36,16 @@ NOTES\n\
 
   int32 statusCode = 0;
 
-	uInt64 sampPerChan = 1;
+	uInt64 sampPerChan = 0;
   if (args.length()==1)
+  {
     statusCode = DAQmxGetSampQuantSampPerChan(taskHandle, &sampPerChan);
+    if (sampPerChan==0)
+    {
+      sampPerChan = 1; // set to 1 if we could not read from task
+      statusCode = 0; // reset
+    }
+  }
   else
   {
     if (!args(1).is_scalar_type())
