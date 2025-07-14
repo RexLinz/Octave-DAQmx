@@ -21,6 +21,10 @@
 %   number of samples specified for the task.
 % [samplesWritten, statusCode] = DAQmxWriteAnalogF64(taskHandle, data)
 %   Write analog data to DAC
+% [pattern, statusCode] = DAQmxReadDigitalLines(taskHandle, maxSamples)
+%   read digital inputs
+% [samplesWritten, statusCode] = DAQmxWriteDigitalLines(taskHandle, pattern)
+%   write digital outputs
 % statusCode = DAQmxStopTask(taskHandle)** \
 %   Stop the task. It is not required to stop a task if you clear it next.
 % statusCode = DAQmxClearTask(taskHandle)** \

@@ -40,9 +40,13 @@ compile("DAQmxLoadTask.cc");
 compile("DAQmxGetSampQuantSampPerChan.cc");
 compile("DAQmxGetTaskNumChans.cc");
 compile("DAQmxGetSampClkRate.cc");
-% start task and read data using task
 compile("DAQmxStartTask.cc");
+% read and write analog data using task
 compile("DAQmxReadAnalogF64.cc");
+compile("DAQmxWriteAnalogF64.cc");
+% read and write digital data using task
+compile("DAQmxReadDigitalLines.cc");
+compile("DAQmxWriteDigitalLines.cc");
 % stop and clear task
 compile("DAQmxStopTask.cc");
 compile("DAQmxClearTask.cc");
