@@ -31,10 +31,8 @@ return task handle")
   octave_value_list retval(2);
 // returning a void* pointer as uint64
   uintptr_t ptr_as_int = reinterpret_cast<uintptr_t>(taskHandle);
-//  return octave_value(static_cast<uInt64>(ptr_as_int));
   retval(0) = octave_value(uint64NDArray(dim_vector(1,1), ptr_as_int));
   retval(1) = octave_value(int32NDArray(dim_vector(1,1), statusCode));
-//  retval(1) = octave_value(statusCode);
 
   return retval;
 }
