@@ -26,8 +26,8 @@ get number of samples per channel the task referenced by taskHandle is using")
   statusCode = DAQmxGetSampQuantSampPerChan(taskHandle, &sampPerChan);
 
   octave_value_list retval(2);
-  retval(0) = octave_value(sampPerChan);
-  retval(1) = octave_value(statusCode);
+  retval(0) = octave_value(uint64NDArray(dim_vector(1,1), sampPerChan));
+  retval(1) = octave_value(int32NDArray(dim_vector(1,1), statusCode));
   return retval;
 }
 

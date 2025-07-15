@@ -3,7 +3,7 @@
 // start the task referenced by taskHandle
 
 // compile and link:
-// mkoctfile -I. -L. -lNIDAQmx -sDAQmxStartTask.cc
+// mkoctfile -I. -L. -lNIDAQmx -s DAQmxStartTask.cc
 
 #include <iostream>
 #include <octave/oct.h>
@@ -26,7 +26,6 @@ start the task referenced by taskHandle")
   int32 statusCode = 0;
   statusCode = DAQmxStartTask(taskHandle);
 
-//  return octave_value(static_cast<uInt64>(ptr_as_int));
-  return octave_value(statusCode);
+  return octave_value(int32NDArray(dim_vector(1,1), statusCode));
 }
 

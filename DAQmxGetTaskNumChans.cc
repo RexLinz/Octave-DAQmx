@@ -26,8 +26,8 @@ get number of channels the task referenced by taskHandle is using")
   statusCode = DAQmxGetTaskNumChans(taskHandle, &numChannels);
 
   octave_value_list retval(2);
-  retval(0) = octave_value(numChannels);
-  retval(1) = octave_value(statusCode);
+  retval(0) = octave_value(uint32NDArray(dim_vector(1,1), numChannels));
+  retval(1) = octave_value(int32NDArray(dim_vector(1,1), statusCode));
   return retval;
 }
 

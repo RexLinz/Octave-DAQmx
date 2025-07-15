@@ -28,7 +28,6 @@ NOTE: a cleared task could NOT be restarted again")
   int32 statusCode = 0;
   statusCode = DAQmxClearTask(taskHandle);
 
-//  return octave_value(static_cast<uInt64>(ptr_as_int));
-  return octave_value(statusCode);
+  return octave_value(int32NDArray(dim_vector(1,1), statusCode));
 
 }

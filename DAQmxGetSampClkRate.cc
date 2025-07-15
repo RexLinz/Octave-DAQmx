@@ -27,7 +27,7 @@ get the sample clock the task referenced by taskHandle is using")
 
   octave_value_list retval(2);
   retval(0) = octave_value(sampClkRate);
-  retval(1) = octave_value(statusCode);
+  retval(1) = octave_value(int32NDArray(dim_vector(1,1), statusCode));
   return retval;
 }
 

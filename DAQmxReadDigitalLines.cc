@@ -92,7 +92,7 @@ NOTES\n\
 //  if (samplesRead < sampPerChan)
 //    pattern.resize(numChannels, samplesRead); // cut unused columns (samples)
   retval(0) = octave_value(pattern.transpose()); // one channel per column
-  retval(1) = octave_value(statusCode);
+  retval(1) = octave_value(int32NDArray(dim_vector(1,1), statusCode));
   return retval;
 }
 

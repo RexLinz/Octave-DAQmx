@@ -28,7 +28,6 @@ NOTE: a stopped task could be restarted")
   int32 statusCode = 0;
   statusCode = DAQmxStopTask(taskHandle);
 
-//  return octave_value(static_cast<uInt64>(ptr_as_int));
-  return octave_value(statusCode);
+  return octave_value(int32NDArray(dim_vector(1,1), statusCode));
 
 }
